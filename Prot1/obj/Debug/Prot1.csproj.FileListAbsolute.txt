@@ -1,0 +1,5 @@
+C:\Users\iori.lgtaneno\source\repos\Prot1\Prot1\obj\Debug\Prot1.csproj.AssemblyReference.cache
+C:\Users\iori.lgtaneno\source\repos\Prot1\Prot1\obj\Debug\Prot1.Form1.resources
+C:\Users\iori.lgtaneno\source\repos\Prot1\Prot1\obj\Debug\Prot1.Properties.Resources.resources
+C:\Users\iori.lgtaneno\source\repos\Prot1\Prot1\obj\Debug\Prot1.csproj.GenerateResource.cache
+C:\Users\iori.lgtaneno\source\repos\Prot1\Prot1\obj\Debug\Prot1.csproj.CoreCompileInputs.cache
