@@ -1,14 +1,15 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySqlConnector;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Prot1
 {
@@ -21,13 +22,15 @@ namespace Prot1
         string DADOS_CONEXAO = "server=localhost;user=root;password=;database=;";
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string id = txtIdade.Text;
             string nome = txtNome.Text;
             string idade = txtIdade.Text;
             string raca = cbRaca.Text;
-            string pelagem = cbPelagem.Text;
-            string gene = cbGenero.Text;
+            string gene = rabGenero.Text;
+            string cast= cbCastro.Text;
+            
 
-            MessageBox.Show($"O nome do gato é {nome}, da raça {raca}, com a pelagem {pelagem} foi salvo com {idade} anos deidade. O gato é {gene}");
+            MessageBox.Show($"O nome do gato é {nome}, da raça {raca}, foi salvo com {idade} anos deidade. O gato é {gene} e {cast} castrado.");
 
 
 
@@ -37,15 +40,15 @@ namespace Prot1
             using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
             {
                 conn.Open();
-                string scriptInsert = "INSERT INTO tb_gatos (nome) VALUE (@nome)";
+                string scriptInsert = "INSERT INTO tb_gatito (nome) VALUE (@nome)";
 
                 using (MySqlCommand comando = new MySqlCommand(scriptInsert, conn))
                 {
                     comando.Parameters.AddWithValue("@nome", nome);
                     comando.Parameters.AddWithValue("@idade", idade);
                     comando.Parameters.AddWithValue("@raca", raca);
-                    comando.Parameters.AddWithValue("@pelagem", pelagem);
-                    comando.Parameters.AddWithValue("@gene", gene);
+                    comando.Parameters.AddWithValue("@gen", gene);
+                    comando.Parameters.AddWithValue("@cast",cast);
                     controleLinhasAfetadas = comando.ExecuteNonQuery();
 
                     comando.ExecuteNonQuery();
@@ -84,17 +87,11 @@ namespace Prot1
                         lbIdResultado.Tesxt = dadosResultado["id"].ToString();
                         lbNomeResultado.Text = dadosResultado["nome"].ToString();
                         lbRacaResultado.Text = dadosResultado["raca"].ToString();
-                        lbPelageResultado.Text = dadosResultado["pelagem"].ToString();
                         lbGeneResultado.Text = dadosResultado["gene"].ToString();
+                        lbPelageResultado.Text = dadosResultado["cast"].ToString();
+                        
                     }
                 }
-
-
-
-
-
-
-
                 conn.Close();
             }
         }
@@ -112,11 +109,55 @@ namespace Prot1
                         
                         DataTable dt = new DataTable();
                         resultadoConsultaMySql.Fill(dt);
-                        dgvListarTudo.DataSource = dt;
-                        
-                        
+                        dgvListarTudo.DataSource = dt;                                          
                     }
                 conn.Close();
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            string campoId = TextId.txt;
+            int controleLinhasAfetadas = 0;
+            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
+            {
+                conn.Open();
+                string scriptDelete = "DELETE FROM tb_gatito" +
+                    "WHERE id = @id";
+
+                using (MySqlCommand comando = new MySqlCommand(scriptDelete, conn))
+                {
+                    comando.Parameters.AddWithValue("@id", campoId);
+
+                    controleLinhasAfetadas = comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string campoId = TextId.txt;
+            string campoNome = campoNome.text;
+            string campoRaca = campoRaca.text;
+            string campoIdade = campoIdade.text;
+            string campoPelag = campoPelag.text;
+            int controleLinhasAfetadas = 0;
+            using (MySqlConnection conn = new MySqlConnection(DADOS_CONEXAO))
+            {
+                conn.Open();
+                string scriptDelete = "UPDATE tb_cadastro SET" + "nome = $nome, raca = $raca, idade = $idade, pelagem = $pelag";
+
+                using (MySqlCommand comando = new MySqlCommand(scriptDelete, conn))
+                {
+                    comando.Parameters.AddWithValue("@id", campoId);
+                    comando.Parameters.AddWithValue("@nome", campoNome);
+                    comando.Parameters.AddWithValue("@raca", campoRaca);
+                    comando.Parameters.AddWithValue("@idade", campoIdade);
+                    comando.Parameters.AddWithValue("@pelag", campoPelag);
+
+
+                    controleLinhasAfetadas = comando.ExecuteNonQuery();
+                }
             }
         }
     }

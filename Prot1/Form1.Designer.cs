@@ -39,13 +39,15 @@
             this.btnConsut = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.txtIdade = new System.Windows.Forms.TextBox();
             this.cbRaca = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbGenero = new System.Windows.Forms.ComboBox();
             this.btnConsutList = new System.Windows.Forms.Button();
+            this.radSi = new System.Windows.Forms.RadioButton();
+            this.radNa = new System.Windows.Forms.RadioButton();
+            this.radM = new System.Windows.Forms.RadioButton();
+            this.radF = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,11 +75,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(29, 112);
+            this.label4.Location = new System.Drawing.Point(12, 139);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 16);
+            this.label4.Size = new System.Drawing.Size(69, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "pelagem";
+            this.label4.Text = "Castrado?";
             // 
             // label5
             // 
@@ -115,6 +117,7 @@
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Alterar";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnConsut
             // 
@@ -134,6 +137,7 @@
             this.btnExcluir.TabIndex = 9;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // dataGridView1
             // 
@@ -143,21 +147,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(428, 426);
             this.dataGridView1.TabIndex = 10;
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(90, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 22);
-            this.textBox1.TabIndex = 11;
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(90, 28);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(145, 22);
+            this.txtNome.TabIndex = 11;
             // 
-            // textBox2
+            // txtIdade
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(90, 56);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(145, 22);
-            this.textBox2.TabIndex = 12;
+            this.txtIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdade.Location = new System.Drawing.Point(90, 56);
+            this.txtIdade.Name = "txtIdade";
+            this.txtIdade.Size = new System.Drawing.Size(145, 22);
+            this.txtIdade.TabIndex = 12;
             // 
             // cbRaca
             // 
@@ -168,33 +172,15 @@
             this.cbRaca.Size = new System.Drawing.Size(145, 24);
             this.cbRaca.TabIndex = 13;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(90, 114);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(145, 24);
-            this.comboBox2.TabIndex = 14;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 147);
+            this.label6.Location = new System.Drawing.Point(21, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 16);
             this.label6.TabIndex = 15;
             this.label6.Text = "Genero";
-            // 
-            // cbGenero
-            // 
-            this.cbGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGenero.FormattingEnabled = true;
-            this.cbGenero.Location = new System.Drawing.Point(90, 144);
-            this.cbGenero.Name = "cbGenero";
-            this.cbGenero.Size = new System.Drawing.Size(145, 24);
-            this.cbGenero.TabIndex = 16;
             // 
             // btnConsutList
             // 
@@ -206,18 +192,64 @@
             this.btnConsutList.UseVisualStyleBackColor = true;
             this.btnConsutList.Click += new System.EventHandler(this.btnConsutList_Click);
             // 
+            // radSi
+            // 
+            this.radSi.AutoSize = true;
+            this.radSi.Location = new System.Drawing.Point(87, 139);
+            this.radSi.Name = "radSi";
+            this.radSi.Size = new System.Drawing.Size(42, 17);
+            this.radSi.TabIndex = 18;
+            this.radSi.TabStop = true;
+            this.radSi.Text = "Sim";
+            this.radSi.UseVisualStyleBackColor = true;
+            // 
+            // radNa
+            // 
+            this.radNa.AutoSize = true;
+            this.radNa.Location = new System.Drawing.Point(135, 138);
+            this.radNa.Name = "radNa";
+            this.radNa.Size = new System.Drawing.Size(45, 17);
+            this.radNa.TabIndex = 19;
+            this.radNa.TabStop = true;
+            this.radNa.Text = "Não";
+            this.radNa.UseVisualStyleBackColor = true;
+            // 
+            // radM
+            // 
+            this.radM.AutoSize = true;
+            this.radM.Location = new System.Drawing.Point(87, 116);
+            this.radM.Name = "radM";
+            this.radM.Size = new System.Drawing.Size(34, 17);
+            this.radM.TabIndex = 20;
+            this.radM.TabStop = true;
+            this.radM.Text = "M";
+            this.radM.UseVisualStyleBackColor = true;
+            // 
+            // radF
+            // 
+            this.radF.AutoSize = true;
+            this.radF.Location = new System.Drawing.Point(135, 116);
+            this.radF.Name = "radF";
+            this.radF.Size = new System.Drawing.Size(31, 17);
+            this.radF.TabIndex = 21;
+            this.radF.TabStop = true;
+            this.radF.Text = "F";
+            this.radF.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radF);
+            this.Controls.Add(this.radM);
+            this.Controls.Add(this.radNa);
+            this.Controls.Add(this.radSi);
             this.Controls.Add(this.btnConsutList);
-            this.Controls.Add(this.cbGenero);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.cbRaca);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIdade);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnConsut);
@@ -250,13 +282,15 @@
         private System.Windows.Forms.Button btnConsut;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.TextBox txtIdade;
         private System.Windows.Forms.ComboBox cbRaca;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.Button btnConsutList;
+        private System.Windows.Forms.RadioButton radSi;
+        private System.Windows.Forms.RadioButton radNa;
+        private System.Windows.Forms.RadioButton radM;
+        private System.Windows.Forms.RadioButton radF;
     }
 }
 
